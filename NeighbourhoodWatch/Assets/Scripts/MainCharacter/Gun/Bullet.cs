@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1.5f);
         // This is to prevent the bullet from staying spawned in forever if it doesn't hit any targets.
     }
 
@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Basic Enemy
         if (other.gameObject.TryGetComponent(out EnemyHealth enemyComponent))
         {
             Destroy(gameObject);

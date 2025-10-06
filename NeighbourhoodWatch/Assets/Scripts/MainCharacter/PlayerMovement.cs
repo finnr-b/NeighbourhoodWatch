@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     public Gun gun;
 
+    public float fireRate = 0.1f;
+    private float nextFireTime = 0f;
+
     Vector2 moveDirection;
     Vector2 mousePosition;
 
@@ -28,9 +31,10 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = new Vector2(moveInput.x, moveInput.y).normalized;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             gun.Fire();
+            nextFireTime = Time.time + fireRate;
         }
     }
 
